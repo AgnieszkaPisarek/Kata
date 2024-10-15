@@ -84,8 +84,8 @@ class FizzBuzzTest {
     @Test
     void shouldPrintFizzBuzzBuzz_whenNumberIsThirtyFive() {
         final var FizzBuzz = new FizzBuzz();
-        int number = 53;
-        assertThat(FizzBuzz.compute(number)).isEqualTo("FizzBuzz");
+        int number = 35;
+        assertThat(FizzBuzz.compute(number)).isEqualTo("FizzBuzzBuzz");
     }
 
 }
