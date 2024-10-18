@@ -14,4 +14,8 @@ The Kata says you should write a function to convert from normal numbers to Roma
 ```
 Reference: [Rules of Roman numbers](http://www.novaroma.org/via_romana/numbers.html)
 
+# Part II
+
+Write a function to convert in the other direction, ie numeral to digit.
+
 Source: [CodingDojo](https://codingdojo.org/kata/RomanNumerals/)
