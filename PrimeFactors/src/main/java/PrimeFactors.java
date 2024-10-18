@@ -6,9 +6,16 @@ public class PrimeFactors {
     public List<Integer> primeFactors(int n) {
 
         List<Integer> primes = new ArrayList<>();
-        if(n > 1)
-            primes.add(n);
+        if(n == 1)
+            return primes;
 
+        for(int i = 2; i < n / 2; i++) {
+            while(n % i == 0) {
+                primes.add(i);
+                n /= i;
+            }
+        }
+        primes.add(n);
         return primes;
     }
 }
