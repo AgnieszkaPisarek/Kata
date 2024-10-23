@@ -148,4 +148,147 @@ class MarsRoverEdgesTest {
         assertThat(marsRover.getDirection()).isEqualTo('N');
     }
 
+    @Test
+    void shouldMoveFromOneToFive_whenGoingForwardFacingS() {
+        final var marsRover = new MarsRover(1, 8, 'S');
+        marsRover.move(new char[]{'f'});
+        assertThat(marsRover.getX()).isEqualTo(5);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('N');
+    }
+
+    @Test
+    void shouldMoveFromTwoToSix_whenGoingForwardFacingS() {
+        final var marsRover = new MarsRover(2, 8, 'S');
+        marsRover.move(new char[]{'f'});
+        assertThat(marsRover.getX()).isEqualTo(6);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('N');
+    }
+
+    @Test
+    void shouldMoveFromThreeToSeven_whenGoingForwardFacingS() {
+        final var marsRover = new MarsRover(3, 8, 'S');
+        marsRover.move(new char[]{'f'});
+        assertThat(marsRover.getX()).isEqualTo(7);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('N');
+    }
+
+    @Test
+    void shouldMoveFromFourToEight_whenGoingForwardFacingS() {
+        final var marsRover = new MarsRover(4, 8, 'S');
+        marsRover.move(new char[]{'f'});
+        assertThat(marsRover.getX()).isEqualTo(8);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('N');
+    }
+
+    @Test
+    void shouldMoveFromFiveToOne_whenGoingForwardFacingS() {
+        final var marsRover = new MarsRover(5, 8, 'S');
+        marsRover.move(new char[]{'f'});
+        assertThat(marsRover.getX()).isEqualTo(1);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('N');
+    }
+
+    @Test
+    void shouldMoveFromSixToTwo_whenGoingForwardFacingS() {
+        final var marsRover = new MarsRover(6, 8, 'S');
+        marsRover.move(new char[]{'f'});
+        assertThat(marsRover.getX()).isEqualTo(2);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('N');
+    }
+
+    @Test
+    void shouldMoveFromSevenToThree_whenGoingForwardFacingS() {
+        final var marsRover = new MarsRover(7, 8, 'S');
+        marsRover.move(new char[]{'f'});
+        assertThat(marsRover.getX()).isEqualTo(3);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('N');
+    }
+
+    @Test
+    void shouldMoveFromEightToFour_whenGoingForwardFacingS() {
+        final var marsRover = new MarsRover(8, 8, 'S');
+        marsRover.move(new char[]{'f'});
+        assertThat(marsRover.getX()).isEqualTo(4);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('N');
+    }
+
+    @Test
+    void shouldMoveFromEightToFour_whenGoingBackwardFacingN() {
+        final var marsRover = new MarsRover(8, 8, 'N');
+        marsRover.move(new char[]{'b'});
+        assertThat(marsRover.getX()).isEqualTo(4);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('S');
+    }
+    @Test
+    void shouldMoveFromOneToFive_whenGoingBackwardFacingN() {
+        final var marsRover = new MarsRover(1, 8, 'N');
+        marsRover.move(new char[]{'b'});
+        assertThat(marsRover.getX()).isEqualTo(5);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('S');
+    }
+
+    @Test
+    void shouldMoveFromTwoToSix_whenGoingBackwardFacingN() {
+        final var marsRover = new MarsRover(2, 8, 'N');
+        marsRover.move(new char[]{'b'});
+        assertThat(marsRover.getX()).isEqualTo(6);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('S');
+    }
+
+    @Test
+    void shouldMoveFromThreeToSeven_whenGoingBackwardFacingN() {
+        final var marsRover = new MarsRover(3, 8, 'N');
+        marsRover.move(new char[]{'b'});
+        assertThat(marsRover.getX()).isEqualTo(7);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('S');
+    }
+
+    @Test
+    void shouldMoveFromFourToEight_whenGoingBackwardFacingN() {
+        final var marsRover = new MarsRover(4, 8, 'N');
+        marsRover.move(new char[]{'b'});
+        assertThat(marsRover.getX()).isEqualTo(8);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('S');
+    }
+
+    @Test
+    void shouldMoveFromFiveToOne_whenGoingBackwardFacingN() {
+        final var marsRover = new MarsRover(5, 8, 'N');
+        marsRover.move(new char[]{'b'});
+        assertThat(marsRover.getX()).isEqualTo(1);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('S');
+    }
+
+    @Test
+    void shouldMoveFromSixToTwo_whenGoingBackwardFacingN() {
+        final var marsRover = new MarsRover(6, 8, 'N');
+        marsRover.move(new char[]{'b'});
+        assertThat(marsRover.getX()).isEqualTo(2);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('S');
+    }
+
+    @Test
+    void shouldMoveFromSevenToThree_whenGoingBackwardFacingN() {
+        final var marsRover = new MarsRover(7, 8, 'N');
+        marsRover.move(new char[]{'b'});
+        assertThat(marsRover.getX()).isEqualTo(3);
+        assertThat(marsRover.getY()).isEqualTo(8);
+        assertThat(marsRover.getDirection()).isEqualTo('S');
+    }
+
 }

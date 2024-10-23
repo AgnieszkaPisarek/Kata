@@ -56,7 +56,14 @@ public class MarsRover {
                         x++;
                     }
                 }
-                case 'S' -> y--;
+                case 'S' -> {
+                    if(y == LATITUDE)  {
+                        x = (x <= LONGITUDE/2) ? (x + LONGITUDE/2) : (x - LONGITUDE/2);
+                        direction = 'N';
+                    }   else {
+                        y--;
+                    }
+                }
                 case 'W' -> {
                     if(x == 1)  {
                         x = LONGITUDE;
@@ -69,7 +76,14 @@ public class MarsRover {
 
         if (commands[0] == 'b')    {
             switch (direction) {
-                case 'N' -> y--;
+                case 'N' -> {
+                    if(y == LATITUDE)  {
+                        x = (x <= LONGITUDE/2) ? (x + LONGITUDE/2) : (x - LONGITUDE/2);
+                        direction = 'S';
+                    }   else {
+                        y--;
+                    }
+                }
                 case 'E' -> {
                     if(x == 1)  {
                         x = LONGITUDE;
