@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class MarsRoverTest {
+class MarsRoverMovingTest {
 
     @Test
     void shouldMoveForwardInTheNDirection()    {
@@ -181,25 +181,6 @@ class MarsRoverTest {
         final var MarsRover = new MarsRover(1, 1, 'W');
         MarsRover.move(new char[]{'f'});
         assertThat(MarsRover.getX()).isEqualTo(MarsRover.LONGITUDE);
-        assertThat(MarsRover.getY()).isEqualTo(1);
-        assertThat(MarsRover.getDirection()).isEqualTo('W');
-    }
-
-
-    @Test
-    void shouldMoveToOpposite_whenGoingAcrossThePole()    {
-        final var MarsRover = new MarsRover(3, 1, 'N');
-        MarsRover.move(new char[]{'f'});
-        assertThat(MarsRover.getX()).isEqualTo(7);
-        assertThat(MarsRover.getY()).isEqualTo(1);
-        assertThat(MarsRover.getDirection()).isEqualTo('W');
-    }
-
-    @Test
-    void shouldMoveToOpposite_whenGoingAcrossThePoleFromLongitudeHigherThanFive()    {
-        final var MarsRover = new MarsRover(5, 1, 'N');
-        MarsRover.move(new char[]{'f'});
-        assertThat(MarsRover.getX()).isEqualTo(1);
         assertThat(MarsRover.getY()).isEqualTo(1);
         assertThat(MarsRover.getDirection()).isEqualTo('W');
     }
