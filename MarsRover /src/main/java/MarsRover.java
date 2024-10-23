@@ -5,6 +5,8 @@ public class MarsRover {
     int x;
     int y;
     char direction;
+    final int LONGITUDE = 8;
+    final int LATITUDE = 8;
 
     List<Character> directionsList = new ArrayList<>();
 
@@ -39,19 +41,50 @@ public class MarsRover {
 
         if (commands[0] == 'f')   {
             switch (direction) {
-                case 'N' -> y++;
-                case 'E' -> x++;
+                case 'N' -> {
+                    if(y == 1)  {
+                        x = (x <= LONGITUDE/2) ? (x + LONGITUDE/2) : (x - LONGITUDE/2);
+                        direction = 'W';
+                    }   else {
+                        y++;
+                    }
+                }
+                case 'E' -> {
+                    if (x == LONGITUDE) {
+                        x = 1;
+                    } else {
+                        x++;
+                    }
+                }
                 case 'S' -> y--;
-                case 'W' -> x--;
+                case 'W' -> {
+                    if(x == 1)  {
+                        x = LONGITUDE;
+                    }   else {
+                        x--;
+                    }
+                }
             }
         }
 
         if (commands[0] == 'b')    {
             switch (direction) {
                 case 'N' -> y--;
-                case 'E' -> x--;
+                case 'E' -> {
+                    if(x == 1)  {
+                        x = LONGITUDE;
+                    }   else {
+                        x--;
+                    }
+                }
                 case 'S' -> y++;
-                case 'W' -> x++;
+                case 'W' -> {
+                    if(x == LONGITUDE)  {
+                        x = 1;
+                    }   else {
+                        x++;
+                    }
+                }
             }
         }
 

@@ -149,5 +149,59 @@ class MarsRoverTest {
         assertThat(MarsRover.getDirection()).isEqualTo('E');
     }
 
+    @Test
+    void shouldMoveToEight_whenGoingBackwardsFromOne()    {
+        final var MarsRover = new MarsRover(1, 1, 'E');
+        MarsRover.move(new char[]{'b'});
+        assertThat(MarsRover.getX()).isEqualTo(8);
+        assertThat(MarsRover.getY()).isEqualTo(1);
+        assertThat(MarsRover.getDirection()).isEqualTo('E');
+    }
+
+    @Test
+    void shouldMoveToOne_whenGoingForwardFromEight()    {
+        final var MarsRover = new MarsRover(8, 1, 'E');
+        MarsRover.move(new char[]{'f'});
+        assertThat(MarsRover.getX()).isEqualTo(1);
+        assertThat(MarsRover.getY()).isEqualTo(1);
+        assertThat(MarsRover.getDirection()).isEqualTo('E');
+    }
+
+    @Test
+    void shouldMoveToOne_whenGoingBackwardFromEightFacingW()    {
+        final var MarsRover = new MarsRover(8, 1, 'W');
+        MarsRover.move(new char[]{'b'});
+        assertThat(MarsRover.getX()).isEqualTo(1);
+        assertThat(MarsRover.getY()).isEqualTo(1);
+        assertThat(MarsRover.getDirection()).isEqualTo('W');
+    }
+
+    @Test
+    void shouldMoveToEight_whenGoingForwardFromOneFacingW()    {
+        final var MarsRover = new MarsRover(1, 1, 'W');
+        MarsRover.move(new char[]{'f'});
+        assertThat(MarsRover.getX()).isEqualTo(MarsRover.LONGITUDE);
+        assertThat(MarsRover.getY()).isEqualTo(1);
+        assertThat(MarsRover.getDirection()).isEqualTo('W');
+    }
+
+
+    @Test
+    void shouldMoveToOpposite_whenGoingAcrossThePole()    {
+        final var MarsRover = new MarsRover(3, 1, 'N');
+        MarsRover.move(new char[]{'f'});
+        assertThat(MarsRover.getX()).isEqualTo(7);
+        assertThat(MarsRover.getY()).isEqualTo(1);
+        assertThat(MarsRover.getDirection()).isEqualTo('W');
+    }
+
+    @Test
+    void shouldMoveToOpposite_whenGoingAcrossThePoleFromLongitudeHigherThanFive()    {
+        final var MarsRover = new MarsRover(5, 1, 'N');
+        MarsRover.move(new char[]{'f'});
+        assertThat(MarsRover.getX()).isEqualTo(1);
+        assertThat(MarsRover.getY()).isEqualTo(1);
+        assertThat(MarsRover.getDirection()).isEqualTo('W');
+    }
 
 }
