@@ -74,7 +74,7 @@ public class GameOfLifeTest {
         final var GameOfLife = new GameOfLife();
         String filePath = "/home/agnieszka/IdeaProjects/Kata/GameOfLife/src/resources/underpopulatedCells.txt";
         GameOfLife.readFromFile(filePath);
-        GameOfLife.checkLivingConditions(2, 3);
+        GameOfLife.playGameOfLife();
         char[][] board = GameOfLife.getBoard();
         assertThat(board[2][3]).isEqualTo('.');
     }
@@ -84,7 +84,7 @@ public class GameOfLifeTest {
         final var GameOfLife = new GameOfLife();
         String filePath = "/home/agnieszka/IdeaProjects/Kata/GameOfLife/src/resources/overcrowdedCells.txt";
         GameOfLife.readFromFile(filePath);
-        GameOfLife.checkLivingConditions(2, 3);
+        GameOfLife.playGameOfLife();
         char[][] board = GameOfLife.getBoard();
         assertThat(board[2][3]).isEqualTo('.');
     }
@@ -94,7 +94,7 @@ public class GameOfLifeTest {
         final var GameOfLife = new GameOfLife();
         String filePath = "/home/agnieszka/IdeaProjects/Kata/GameOfLife/src/resources/canAwakenCell.txt";
         GameOfLife.readFromFile(filePath);
-        GameOfLife.checkIfCellCanAwaken(2, 3);
+        GameOfLife.playGameOfLife();
         char[][] board = GameOfLife.getBoard();
         assertThat(board[2][3]).isEqualTo('*');
     }
@@ -116,7 +116,21 @@ public class GameOfLifeTest {
         GameOfLife.readFromFile(filePath);
         assertThat(GameOfLife.checkIfInTheGrid(2, -1)).isEqualTo(false);
         assertThat(GameOfLife.checkIfInTheGrid(2, 8)).isEqualTo(false);
-        assertThat(GameOfLife.checkIfInTheGrid(5, 3)).isEqualTo(true);
+        assertThat(GameOfLife.checkIfInTheGrid(3, 3)).isEqualTo(true);
+    }
+
+    @Test
+    public void shouldBeWorkingForEntireBoard() throws IOException {
+        final var GameOfLife = new GameOfLife();
+        String filePath = "/home/agnieszka/IdeaProjects/Kata/GameOfLife/src/resources/board1.txt";
+        GameOfLife.readFromFile(filePath);
+        GameOfLife.playGameOfLife();
+        char[][] board = GameOfLife.getBoard();
+        GameOfLife.writeToFile(filePath);
+        assertThat(Arrays.equals(board[0], new char[]{'.', '.', '.', '.', '.', '.', '.', '.'})).isTrue();
+        assertThat(Arrays.equals(board[1], new char[]{'.', '.', '.', '*', '*', '.', '.', '.'})).isTrue();
+        assertThat(Arrays.equals(board[2], new char[]{'.', '.', '.', '*', '*', '.', '.', '.'})).isTrue();
+        assertThat(Arrays.equals(board[3], new char[]{'.', '.', '.', '.', '.', '.', '.', '.'})).isTrue();
     }
 
 
