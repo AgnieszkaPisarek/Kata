@@ -79,6 +79,7 @@ public class GameOfLife {
             }
         }
         board = nextGenerationBoard.clone();
+        displayGrid();
     }
 
     public void writeToFile(String filePath) throws IOException {
@@ -91,8 +92,17 @@ public class GameOfLife {
                 fileWriter.write("\n");
             }
         }
-
     }
+
+    public void displayGrid()  {
+        for(int x = 0; x < HEIGHT; x++) {
+            for(int y = 0; y < WIDTH; y++) {
+                System.out.print(board[x][y]);
+            }
+            System.out.println("\n");
+        }
+    }
+
 
 
 }
