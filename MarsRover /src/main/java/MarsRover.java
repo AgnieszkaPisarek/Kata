@@ -47,8 +47,7 @@ public class MarsRover {
         for(char command : commands) {
             if (!reportTheObstacle(command)) {
                 switch (command) {
-                    case 'f' -> goForward();
-                    case 'b' -> goBackward();
+                    case 'f', 'b' -> go(command);
                     case 'r' -> turnRight();
                     case 'l' -> turnLeft();
                 }
@@ -61,71 +60,40 @@ public class MarsRover {
         }
     }
 
-    private void goForward() {
+    private void go(char command)   {
         switch (direction) {
             case 'N' -> {
-                if(y == 1)  {
+                if(y == LATITUDE || y == 1)  {
                     x = (x <= LONGITUDE/2) ? (x + LONGITUDE/2) : (x - LONGITUDE/2);
                     direction = 'S';
                 }   else {
-                    y++;
+                    y = (command == 'f') ? (y + 1) : (y - 1);
                 }
             }
             case 'E' -> {
-                if (x == LONGITUDE) {
+                if(x == LONGITUDE)  {
                     x = 1;
+                } else if(x == 1) {
+                    x = LONGITUDE;
                 } else {
-                    x++;
+                    x = (command == 'f') ? (x + 1) : (x - 1);
                 }
             }
             case 'S' -> {
-                if(y == LATITUDE)  {
+                if(y == 1 || y == LATITUDE)  {
                     x = (x <= LONGITUDE/2) ? (x + LONGITUDE/2) : (x - LONGITUDE/2);
                     direction = 'N';
                 }   else {
-                    y--;
-                }
-            }
-            case 'W' -> {
-                if(x == 1)  {
-                    x = LONGITUDE;
-                }   else {
-                    x--;
-                }
-            }
-        }
-    }
-
-    private void goBackward() {
-        switch (direction) {
-            case 'N' -> {
-                if(y == LATITUDE)  {
-                    x = (x <= LONGITUDE/2) ? (x + LONGITUDE/2) : (x - LONGITUDE/2);
-                    direction = 'S';
-                }   else {
-                    y--;
-                }
-            }
-            case 'E' -> {
-                if(x == 1)  {
-                    x = LONGITUDE;
-                }   else {
-                    x--;
-                }
-            }
-            case 'S' -> {
-                if(y == 1)  {
-                    x = (x <= LONGITUDE/2) ? (x + LONGITUDE/2) : (x - LONGITUDE/2);
-                    direction = 'N';
-                }   else {
-                    y++;
+                    y = (command == 'f') ? (y - 1) : (y + 1);
                 }
             }
             case 'W' -> {
                 if(x == LONGITUDE)  {
                     x = 1;
-                }   else {
-                    x++;
+                } else if(x == 1) {
+                    x = LONGITUDE;
+                } else {
+                    x = (command == 'f') ? (x - 1) : (x + 1);
                 }
             }
         }
