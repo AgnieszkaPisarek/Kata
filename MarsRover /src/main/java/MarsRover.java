@@ -62,38 +62,21 @@ public class MarsRover {
 
     private void go(char command)   {
         switch (direction) {
-            case 'N' -> {
+            case 'N', 'S' -> {
                 if(y == LATITUDE || y == 1)  {
                     x = (x <= LONGITUDE/2) ? (x + LONGITUDE/2) : (x - LONGITUDE/2);
-                    direction = 'S';
+                    direction = (direction == 'N') ? 'S' : 'N';
                 }   else {
-                    y = (command == 'f') ? (y + 1) : (y - 1);
+                    y += (direction == 'N') ? (command == 'f' ? 1 : -1) : (command == 'f' ? -1 : 1);
                 }
             }
-            case 'E' -> {
+            case 'E', 'W' -> {
                 if(x == LONGITUDE)  {
                     x = 1;
                 } else if(x == 1) {
                     x = LONGITUDE;
                 } else {
-                    x = (command == 'f') ? (x + 1) : (x - 1);
-                }
-            }
-            case 'S' -> {
-                if(y == 1 || y == LATITUDE)  {
-                    x = (x <= LONGITUDE/2) ? (x + LONGITUDE/2) : (x - LONGITUDE/2);
-                    direction = 'N';
-                }   else {
-                    y = (command == 'f') ? (y - 1) : (y + 1);
-                }
-            }
-            case 'W' -> {
-                if(x == LONGITUDE)  {
-                    x = 1;
-                } else if(x == 1) {
-                    x = LONGITUDE;
-                } else {
-                    x = (command == 'f') ? (x - 1) : (x + 1);
+                    x += (command == 'f') ? (direction == 'E' ? 1 : -1) : (direction == 'E' ? -1 : 1);
                 }
             }
         }
