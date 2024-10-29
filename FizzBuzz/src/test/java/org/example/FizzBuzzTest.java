@@ -39,21 +39,21 @@ class FizzBuzzTest {
         int number = 9;
         assertThat(FizzBuzz.compute(number)).isEqualTo("Fizz");
     }
-//
-//    @Test
-//    void shouldPrintBuzz_whenNumberIsTen() {
-//        final var FizzBuzz = new FizzBuzz();
-//        int number = 10;
-//        assertThat(FizzBuzz.compute(number)).isEqualTo("Buzz");
-//    }
-//
-//    @Test
-//    void shouldPrintFizzBuzz_whenNumberIsFifteen() {
-//        final var FizzBuzz = new FizzBuzz();
-//        int number = 15;
-//        assertThat(FizzBuzz.compute(number)).isEqualTo("FizzBuzz");
-//    }
-//
+
+    @Test
+    void shouldPrintBuzz_whenNumberIsTen() {
+        final var FizzBuzz = new FizzBuzz();
+        int number = 10;
+        assertThat(FizzBuzz.compute(number)).isEqualTo("Buzz");
+    }
+
+    @Test
+    void shouldPrintFizzBuzz_whenNumberIsFifteen() {
+        final var FizzBuzz = new FizzBuzz();
+        int number = 15;
+        assertThat(FizzBuzz.compute(number)).isEqualTo("FizzBuzz");
+    }
+
 //    @Test
 //    void shouldPrintCorrectWord_whenNumberIsGiven() {
 //        final var FizzBuzz = new FizzBuzz();
