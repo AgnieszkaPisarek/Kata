@@ -11,7 +11,7 @@ class ChristmasTreeTest {
     @Test
     void shouldReturnOneLevelTree_whenGivenOne() {
 
-        final var christmasTree = new ChristmasTree();
+        final var christmasTree = new RomanNumeral();
         ArrayList<String> tree;
         tree = christmasTree.draw(1);
 
@@ -24,7 +24,7 @@ class ChristmasTreeTest {
     @Test
     void shouldReturnTwoLevelTree_whenGivenTwo() {
 
-        final var christmasTree = new ChristmasTree();
+        final var christmasTree = new RomanNumeral();
         ArrayList<String> tree;
         tree = christmasTree.draw(2);
 
@@ -38,7 +38,7 @@ class ChristmasTreeTest {
     @Test
     void shouldReturnThreeLevelTree_whenGivenThree() {
 
-        final var christmasTree = new ChristmasTree();
+        final var christmasTree = new RomanNumeral();
         ArrayList<String> tree;
         tree = christmasTree.draw(3);
 

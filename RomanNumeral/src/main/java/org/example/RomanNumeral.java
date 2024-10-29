@@ -1,9 +1,11 @@
+package org.example;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class RomanNumerals {
+public class RomanNumeral {
 
-    public String convertToRoman(int number) {
+   public String convertToRoman(int number) {
 
         StringBuilder roman = new StringBuilder();
         String[] signs = new String[]{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
@@ -48,17 +50,16 @@ public class RomanNumerals {
                     break;
             }
         }
-            for (int j = 0; j < parts.size() - 1; j++) {
-                if (parts.get(j) < parts.get(j + 1)) {
-                    number -= parts.get(j);
-                }   else {
-                    number += parts.get(j);
-                }
+        for (int j = 0; j < parts.size() - 1; j++) {
+            if (parts.get(j) < parts.get(j + 1)) {
+                number -= parts.get(j);
+            }   else {
+                number += parts.get(j);
             }
+        }
 
-         number += parts.getLast();
+        number += parts.getLast();
 
         return number;
     }
-
 }
