@@ -25,13 +25,13 @@ class FizzBuzzTest {
         int number = 3;
         assertThat(FizzBuzz.compute(number)).isEqualTo("Fizz");
     }
-//
-//    @Test
-//    void shouldPrintBuzz_whenNumberIsFive() {
-//        final var FizzBuzz = new FizzBuzz();
-//        int number = 5;
-//        assertThat(FizzBuzz.compute(number)).isEqualTo("Buzz");
-//    }
+
+    @Test
+    void shouldPrintBuzz_whenNumberIsFive() {
+        final var FizzBuzz = new FizzBuzz();
+        int number = 5;
+        assertThat(FizzBuzz.compute(number)).isEqualTo("Buzz");
+    }
 //
 //    @Test
 //    void shouldPrintFizz_whenNumberIsNine() {
