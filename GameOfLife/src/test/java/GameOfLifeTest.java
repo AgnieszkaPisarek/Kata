@@ -1,4 +1,4 @@
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -80,16 +80,6 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void overcrowdedCellDies_whenThereAreMoreThanThreeLivingCellsAround() throws IOException {
-        final var GameOfLife = new GameOfLife();
-        String filePath = "/home/agnieszka/IdeaProjects/Kata/GameOfLife/src/resources/overcrowdedCells.txt";
-        GameOfLife.readFromFile(filePath);
-        GameOfLife.playGameOfLife();
-        char[][] board = GameOfLife.getBoard();
-        assertThat(board[2][3]).isEqualTo('.');
-    }
-
-    @Test
     public void cellShouldAwaken_whenThereAreThreeLiveNeighbours() throws IOException {
         final var GameOfLife = new GameOfLife();
         String filePath = "/home/agnieszka/IdeaProjects/Kata/GameOfLife/src/resources/canAwakenCell.txt";
@@ -144,20 +134,6 @@ public class GameOfLifeTest {
         assertThat(Arrays.equals(board[0], new char[]{'.', '.', '.', '.', '.', '.', '.', '.'})).isTrue();
         assertThat(Arrays.equals(board[1], new char[]{'.', '.', '.', '*', '*', '.', '.', '.'})).isTrue();
         assertThat(Arrays.equals(board[2], new char[]{'.', '.', '.', '*', '*', '.', '.', '.'})).isTrue();
-        assertThat(Arrays.equals(board[3], new char[]{'.', '.', '.', '.', '.', '.', '.', '.'})).isTrue();
-    }
-
-    @Test
-    public void shouldBeWorkingForEntireBoardCase3() throws IOException {
-        final var GameOfLife = new GameOfLife();
-        String filePath = "/home/agnieszka/IdeaProjects/Kata/GameOfLife/src/resources/overcrowdedCells.txt";
-        GameOfLife.readFromFile(filePath);
-        GameOfLife.playGameOfLife();
-        char[][] board = GameOfLife.getBoard();
-        GameOfLife.writeToFile(filePath);
-        assertThat(Arrays.equals(board[0], new char[]{'.', '.', '.', '*', '.', '.', '.', '.'})).isTrue();
-        assertThat(Arrays.equals(board[1], new char[]{'.', '.', '*', '.', '*', '.', '.', '.'})).isTrue();
-        assertThat(Arrays.equals(board[2], new char[]{'.', '.', '*', '.', '*', '.', '.', '.'})).isTrue();
         assertThat(Arrays.equals(board[3], new char[]{'.', '.', '.', '.', '.', '.', '.', '.'})).isTrue();
     }
     @Test

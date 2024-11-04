@@ -5,8 +5,8 @@ public class MarsRover {
     int x;
     int y;
     char direction;
-    final int LONGITUDE = 8;
-    final int LATITUDE = 8;
+    final static int LONGITUDE = 8;
+    final static int LATITUDE = 8;
 
     final char[] commandsKnown = new char[]{'f','b','l','r'};
     List<Character> directionsList = new ArrayList<>();
