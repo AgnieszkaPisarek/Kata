@@ -3,6 +3,7 @@ package org.example;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -11,9 +12,9 @@ class ChristmasTreeTest {
     @Test
     void shouldReturnOneLevelTree_whenGivenOne() {
 
-        final var christmasTree = new RomanNumeral();
-        ArrayList<String> tree;
-        tree = christmasTree.draw(1);
+        final var christmasTree = new ChristmasTree();
+        List<String> tree;
+        tree = christmasTree.makeATree(1);
 
         assertAll(
                 () -> assertThat(tree.getFirst()).isEqualTo("X"),
@@ -24,9 +25,9 @@ class ChristmasTreeTest {
     @Test
     void shouldReturnTwoLevelTree_whenGivenTwo() {
 
-        final var christmasTree = new RomanNumeral();
-        ArrayList<String> tree;
-        tree = christmasTree.draw(2);
+        final var christmasTree = new ChristmasTree();
+        List<String> tree;
+        tree = christmasTree.makeATree(2);
 
         assertAll(
                 () -> assertThat(tree.getFirst()).isEqualTo(" X "),
@@ -38,9 +39,9 @@ class ChristmasTreeTest {
     @Test
     void shouldReturnThreeLevelTree_whenGivenThree() {
 
-        final var christmasTree = new RomanNumeral();
-        ArrayList<String> tree;
-        tree = christmasTree.draw(3);
+        final var christmasTree = new ChristmasTree();
+        List<String> tree;
+        tree = christmasTree.makeATree(3);
 
         assertAll(
                 () -> assertThat(tree.getFirst()).isEqualTo("  X  "),
