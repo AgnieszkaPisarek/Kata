@@ -4,228 +4,228 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class RomanNumeralTest {
+class RomanNumeralFromRomanTest {
     @Test
     public void shouldGiveI_whenGivenOne()  {
-        var RomanNumeral = new RomanNumeral();
+        var romanNumeral = new RomanNumeral();
         int number = 1;
-        assertThat(RomanNumeral.convertToRoman(number)).isEqualTo("I");
+        assertThat(romanNumeral.convertFromRoman("I")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveII_whenGivenTwo()  {
-        var RomanNumeral = new RomanNumeral();
+        var romanNumeral = new RomanNumeral();
         int number = 2;
-        assertThat(RomanNumeral.convertToRoman(number)).isEqualTo("II");
+        assertThat(romanNumeral.convertFromRoman("II")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveIV_whenGivenFour()  {
-        var RomanNumeral = new RomanNumeral();
+        var romanNumeral = new RomanNumeral();
         int number = 4;
-        assertThat(RomanNumeral.convertToRoman(number)).isEqualTo("IV");
+        assertThat(romanNumeral.convertFromRoman("IV")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveV_whenGivenFive()  {
-        var RomanNumeral = new RomanNumeral();
+        var romanNumeral = new RomanNumeral();
         int number = 5;
-        assertThat(RomanNumeral.convertToRoman(number)).isEqualTo("V");
+        assertThat(romanNumeral.convertFromRoman("V")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveVI_whenGivenSix()  {
-        var RomanNumeral = new RomanNumeral();
+        var romanNumeral = new RomanNumeral();
         int number = 6;
-        assertThat(RomanNumeral.convertToRoman(number)).isEqualTo("VI");
+        assertThat(romanNumeral.convertFromRoman("VI")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveVII_whenGivenSeven()  {
-        var RomanNumeral = new RomanNumeral();
+        var romanNumeral = new RomanNumeral();
         int number = 7;
-        assertThat(RomanNumeral.convertToRoman(number)).isEqualTo("VII");
+        assertThat(romanNumeral.convertFromRoman("VII")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveIX_whenGivenNine()  {
-        var RomanNumeral = new RomanNumeral();
+        var romanNumeral = new RomanNumeral();
         int number = 9;
-        assertThat(RomanNumeral.convertToRoman(number)).isEqualTo("IX");
+        assertThat(romanNumeral.convertFromRoman("IX")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveX_whenGivenTen()  {
-        var RomanNumeral = new RomanNumeral();
+        var romanNumeral = new RomanNumeral();
         int number = 10;
-        assertThat(RomanNumeral.convertToRoman(number)).isEqualTo("X");
+        assertThat(romanNumeral.convertFromRoman("X")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXI_whenGivenEleven()  {
-        var RomanNumeral = new RomanNumeral();
+        var romanNumeral = new RomanNumeral();
         int number = 11;
-        assertThat(RomanNumeral.convertToRoman(number)).isEqualTo("XI");
+        assertThat(romanNumeral.convertFromRoman("XI")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXIV_whenGivenFourteen() {
         var romanNumeral = new RomanNumeral();
         int number = 14;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XIV");
+        assertThat(romanNumeral.convertFromRoman("XIV")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXV_whenGivenFifteen() {
         var romanNumeral = new RomanNumeral();
         int number = 15;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XV");
+        assertThat(romanNumeral.convertFromRoman("XV")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXVI_whenGivenSixteen() {
         var romanNumeral = new RomanNumeral();
         int number = 16;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XVI");
+        assertThat(romanNumeral.convertFromRoman("XVI")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXIX_whenGivenNineteen() {
         var romanNumeral = new RomanNumeral();
         int number = 19;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XIX");
+        assertThat(romanNumeral.convertFromRoman("XIX")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXX_whenGivenTwenty() {
         var romanNumeral = new RomanNumeral();
         int number = 20;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XX");
+        assertThat(romanNumeral.convertFromRoman("XX")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXXI_whenGivenTwentyOne() {
         var romanNumeral = new RomanNumeral();
         int number = 21;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XXI");
+        assertThat(romanNumeral.convertFromRoman("XXI")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXXIV_whenGivenTwentyFour() {
         var romanNumeral = new RomanNumeral();
         int number = 24;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XXIV");
+        assertThat(romanNumeral.convertFromRoman("XXIV")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXXV_whenGivenTwentyFive() {
         var romanNumeral = new RomanNumeral();
         int number = 25;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XXV");
+        assertThat(romanNumeral.convertFromRoman("XXV")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXXVI_whenGivenTwentySix() {
         var romanNumeral = new RomanNumeral();
         int number = 26;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XXVI");
+        assertThat(romanNumeral.convertFromRoman("XXVI")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveL_whenGivenFifty() {
         var romanNumeral = new RomanNumeral();
         int number = 50;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("L");
+        assertThat(romanNumeral.convertFromRoman("L")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXL_whenGivenForty() {
         var romanNumeral = new RomanNumeral();
         int number = 40;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XL");
+        assertThat(romanNumeral.convertFromRoman("XL")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXLI_whenGivenFortyOne() {
         var romanNumeral = new RomanNumeral();
         int number = 41;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XLI");
+        assertThat(romanNumeral.convertFromRoman("XLI")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXC_whenGivenNinety() {
         var romanNumeral = new RomanNumeral();
         int number = 90;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XC");
+        assertThat(romanNumeral.convertFromRoman("XC")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveXCI_whenGivenNinetyOne() {
         var romanNumeral = new RomanNumeral();
         int number = 91;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("XCI");
+        assertThat(romanNumeral.convertFromRoman("XCI")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveC_whenGivenOneHundred() {
         var romanNumeral = new RomanNumeral();
         int number = 100;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("C");
+        assertThat(romanNumeral.convertFromRoman("C")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveCI_whenGivenOneHundredOne() {
         var romanNumeral = new RomanNumeral();
         int number = 101;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("CI");
+        assertThat(romanNumeral.convertFromRoman("CI")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveCD_whenGivenFourHundred() {
         var romanNumeral = new RomanNumeral();
         int number = 400;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("CD");
+        assertThat(romanNumeral.convertFromRoman("CD")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveCDI_whenGivenFourHundredOne() {
         var romanNumeral = new RomanNumeral();
         int number = 401;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("CDI");
+        assertThat(romanNumeral.convertFromRoman("CDI")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveCDX_whenGivenFourHundredTen() {
         var romanNumeral = new RomanNumeral();
         int number = 410;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("CDX");
+        assertThat(romanNumeral.convertFromRoman("CDX")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveCDXL_whenGivenFourHundredForty() {
         var romanNumeral = new RomanNumeral();
         int number = 440;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("CDXL");
+        assertThat(romanNumeral.convertFromRoman("CDXL")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveM_whenGivenOneThousand() {
         var romanNumeral = new RomanNumeral();
         int number = 1000;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("M");
+        assertThat(romanNumeral.convertFromRoman("M")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveMXXV_whenGivenOneThousandTwentyFive() {
         var romanNumeral = new RomanNumeral();
         int number = 1025;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("MXXV");
+        assertThat(romanNumeral.convertFromRoman("MXXV")).isEqualTo(number);
     }
 
     @Test
     public void shouldGiveMCMXCIX_whenGivenOneThousandNineHundredNinetyNine() {
         var romanNumeral = new RomanNumeral();
         int number = 1999;
-        assertThat(romanNumeral.convertToRoman(number)).isEqualTo("MCMXCIX");
+        assertThat(romanNumeral.convertFromRoman("MCMXCIX")).isEqualTo(number);
     }
 }
