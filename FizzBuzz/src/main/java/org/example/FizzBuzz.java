@@ -1,28 +1,37 @@
 package org.example;
 
 public class FizzBuzz {
+    final static String FIZZ = "Fizz";
+    final static String BUZZ = "Buzz";
+
     public String compute(int number) {
 
+        String stringNumber = String.valueOf(number);
         var result = new StringBuilder();
-        String textNumber = String.valueOf(number);
 
-        if(number % 3 == 0)    {
-            result.append("Fizz");
+        if(stringNumber.contains("3"))  {
+            result.append(FIZZ);
+        }
+        if(isDividableByThree(number)) {
+            result.append(FIZZ);
+        }
+        if(isDividableByFive(number)) {
+            result.append(BUZZ);
+        }
+        if(stringNumber.contains("5")) {
+            result.append(BUZZ);
         }
 
-        if(textNumber.contains("3"))    {
-            result.append("Fizz");
-        }
+        return result.isEmpty()? stringNumber : result.toString();
 
-        if(textNumber.contains("5"))    {
-            result.append("Buzz");
-        }
+    }
 
-        if(number % 5 == 0)    {
-            result.append("Buzz");
-        }
+    private static boolean isDividableByThree(int number) {
+        return number % 3 == 0;
+    }
 
-        return result.toString();
+    private static boolean isDividableByFive(int number) {
+        return number % 5 == 0;
     }
 
     public void print() {
