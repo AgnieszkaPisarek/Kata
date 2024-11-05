@@ -16,33 +16,32 @@ class TennisTest {
 
     @Test
     public void shouldSetUpTheTennisGame() {
-        assertAll(
-                () -> assertThat(tennis.startTheGameOfTennis()).isEqualTo("The game has started!"),
-                () -> assertThat(tennis.getPlayerOneScore()).isEqualTo(0),
-                ()  -> assertThat(tennis.getPlayerTwoScore()).isEqualTo(0));
+        assertThat(tennis.startTheGameOfTennis()).isEqualTo("The game has started!");
+        assertThat(tennis.getPlayerOneScore()).isZero();
+        assertThat(tennis.getPlayerTwoScore()).isZero();
     }
 
     @Test
     public void playerOneShouldHaveAPoint_whenPlayerOneScoresAPoint() {
         tennis.playerOneGetsAPoint();
-        assertThat(tennis.getPlayerOneScore()).isEqualTo(1);
+        assertThat(tennis.getPlayerOneScore()).isOne();
     }
 
     @Test
     public void playerTwoShouldHaveAPoint_whenPlayerTwoScoresAPoint() {
         tennis.playerTwoGetsAPoint();
-        assertThat(tennis.getPlayerTwoScore()).isEqualTo(1);
+        assertThat(tennis.getPlayerTwoScore()).isOne();
     }
 
     @Test
-    public void playerOneShouldHaveAPoint_whenPlayerOneScoreASecondPoint() {
+    public void playerOneShouldHaveAPoint_whenPlayerOneScoresASecondPoint() {
         tennis.playerOneGetsAPoint();
         tennis.playerOneGetsAPoint();
         assertThat(tennis.getPlayerOneScore()).isEqualTo(2);
     }
 
     @Test
-    public void playerTwoShouldHaveAPoint_whenPlayerTwoScoreASecondPoint() {
+    public void playerTwoShouldHaveAPoint_whenPlayerTwoScoresASecondPoint() {
         tennis.playerTwoGetsAPoint();
         tennis.playerTwoGetsAPoint();
         assertThat(tennis.getPlayerTwoScore()).isEqualTo(2);
@@ -55,7 +54,7 @@ class TennisTest {
             tennis.playerOneGetsAPoint();
             tennis.playerTwoGetsAPoint();
         }
-        assertThat(tennis.isADeuce()).isEqualTo(true);
+        assertThat(tennis.isADeuce()).isTrue();
     }
 
     @Test
@@ -64,7 +63,7 @@ class TennisTest {
             tennis.playerOneGetsAPoint();
             tennis.playerTwoGetsAPoint();
         }
-        assertThat(tennis.isADeuce()).isEqualTo(false);
+        assertThat(tennis.isADeuce()).isFalse();
     }
 
     @Test

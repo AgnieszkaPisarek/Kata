@@ -10,7 +10,6 @@ public class ChristmasTree {
     public static String BRANCH = "X";
 
     public List<String> makeATree(int height)    {
-
         List<String> tree = new ArrayList<>();
         StringBuilder level;
 
@@ -18,12 +17,11 @@ public class ChristmasTree {
         int numberOfBranchesPerLevel  = 1;
 
         for (int i = 0; i < height; i++) {
-
             level = new StringBuilder();
 
-            level.append(draw(SPACES, numberOfSpacesPerLevel));
-            level.append(draw(BRANCH, numberOfBranchesPerLevel));
-            level.append(draw(SPACES, numberOfSpacesPerLevel));
+            level.append(repeatSymbol(SPACES, numberOfSpacesPerLevel));
+            level.append(repeatSymbol(BRANCH, numberOfBranchesPerLevel));
+            level.append(repeatSymbol(SPACES, numberOfSpacesPerLevel));
 
             numberOfBranchesPerLevel += NUMBER_OF_NEW_BRANCHES_PER_LEVEL;
             numberOfSpacesPerLevel--;
@@ -31,18 +29,18 @@ public class ChristmasTree {
             tree.add(level.toString());
         }
 
-        addRoot(tree);
+        tree.add(getRootFromTreeWithSameMargin(tree));
 
         return tree;
     }
 
-    private static void addRoot(List<String> tree) {
-        String lastLevel = tree.getFirst();
-        tree.add(lastLevel.replaceFirst(BRANCH, ROOT));
+    private static String getRootFromTreeWithSameMargin(List<String> tree) {
+        String peak = tree.getFirst();
+        return peak.replaceFirst(BRANCH, ROOT);
     }
 
-    StringBuilder draw(String sign, int numberOfSignsPerLevel)   {
-        return new StringBuilder().append(sign.repeat(numberOfSignsPerLevel));
+    String repeatSymbol(String symbol, int numberOfRepetitions)   {
+        return symbol.repeat(numberOfRepetitions);
     }
 
 }

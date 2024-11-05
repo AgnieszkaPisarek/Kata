@@ -15,11 +15,12 @@ class ChristmasTreeTest {
         final var christmasTree = new ChristmasTree();
         List<String> tree;
         tree = christmasTree.makeATree(1);
-
-        assertAll(
-                () -> assertThat(tree.getFirst()).isEqualTo("X"),
-                () -> assertThat(tree.getLast()).isEqualTo("|")
+        List<String> expectedTree = List.of(
+                "X",
+                "|"
         );
+
+        assertThat(tree).isEqualTo(expectedTree);
     }
 
     @Test
