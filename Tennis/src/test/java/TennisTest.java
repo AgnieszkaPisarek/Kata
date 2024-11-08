@@ -19,18 +19,21 @@ class TennisTest {
         assertThat(tennis.startTheGameOfTennis()).isEqualTo("The game has started!");
         assertThat(tennis.getPlayerOneScore()).isZero();
         assertThat(tennis.getPlayerTwoScore()).isZero();
+        tennis.getStateOfTheGame();
     }
 
     @Test
     public void playerOneShouldHaveAPoint_whenPlayerOneScoresAPoint() {
         tennis.playerOneGetsAPoint();
         assertThat(tennis.getPlayerOneScore()).isOne();
+        tennis.getStateOfTheGame();
     }
 
     @Test
     public void playerTwoShouldHaveAPoint_whenPlayerTwoScoresAPoint() {
         tennis.playerTwoGetsAPoint();
         assertThat(tennis.getPlayerTwoScore()).isOne();
+        tennis.getStateOfTheGame();
     }
 
     @Test
@@ -38,6 +41,7 @@ class TennisTest {
         tennis.playerOneGetsAPoint();
         tennis.playerOneGetsAPoint();
         assertThat(tennis.getPlayerOneScore()).isEqualTo(2);
+        tennis.getStateOfTheGame();
     }
 
     @Test
@@ -45,6 +49,7 @@ class TennisTest {
         tennis.playerTwoGetsAPoint();
         tennis.playerTwoGetsAPoint();
         assertThat(tennis.getPlayerTwoScore()).isEqualTo(2);
+        tennis.getStateOfTheGame();
     }
 
     @Test
@@ -54,7 +59,8 @@ class TennisTest {
             tennis.playerOneGetsAPoint();
             tennis.playerTwoGetsAPoint();
         }
-        assertThat(tennis.isADeuce()).isTrue();
+        assertThat(tennis.isADeuce()).isEqualTo("Deuce!");
+        tennis.getStateOfTheGame();
     }
 
     @Test
@@ -63,7 +69,8 @@ class TennisTest {
             tennis.playerOneGetsAPoint();
             tennis.playerTwoGetsAPoint();
         }
-        assertThat(tennis.isADeuce()).isFalse();
+        assertThat(tennis.isADeuce()).isEqualTo("No Deuce!");
+        tennis.getStateOfTheGame();
     }
 
     @Test
@@ -75,6 +82,7 @@ class TennisTest {
 
         tennis.playerOneGetsAPoint();
         assertThat(tennis.hasAdvantage()).isEqualTo("Player one has an Advantage!");
+        tennis.getStateOfTheGame();
     }
 
     @Test
@@ -86,6 +94,7 @@ class TennisTest {
 
         tennis.playerTwoGetsAPoint();
         assertThat(tennis.hasAdvantage()).isEqualTo("Player two has an Advantage!");
+        tennis.getStateOfTheGame();
     }
 
     @Test
@@ -97,6 +106,7 @@ class TennisTest {
 
         tennis.playerTwoGetsAPoint();
         assertThat(tennis.hasAdvantage()).isEqualTo("No Advantage.");
+        tennis.getStateOfTheGame();
     }
 
     @Test
@@ -109,6 +119,7 @@ class TennisTest {
         tennis.playerTwoGetsAPoint();
         tennis.playerTwoGetsAPoint();
         assertThat(tennis.whoWon()).isEqualTo("Player two won!");
+        tennis.getStateOfTheGame();
     }
 
     @Test
@@ -121,6 +132,7 @@ class TennisTest {
         tennis.playerOneGetsAPoint();
         tennis.playerOneGetsAPoint();
         assertThat(tennis.whoWon()).isEqualTo("Player one won!");
+        tennis.getStateOfTheGame();
     }
 
     @Test
@@ -129,7 +141,7 @@ class TennisTest {
         tennis.playerOneGetsAPoint();
 
         assertThat(tennis.whoWon()).isEqualTo("No win.");
-
+        tennis.getStateOfTheGame();
     }
 
     @Test
