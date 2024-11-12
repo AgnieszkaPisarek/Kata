@@ -1,5 +1,10 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -16,40 +21,33 @@ class TennisTest {
 
     @Test
     public void shouldSetUpTheTennisGame() {
-        assertThat(tennis.startTheGameOfTennis()).isEqualTo("The game has started!");
-        assertThat(tennis.getPlayerOneScore()).isZero();
-        assertThat(tennis.getPlayerTwoScore()).isZero();
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo("State of the game: love-all");
     }
 
     @Test
     public void playerOneShouldHaveAPoint_whenPlayerOneScoresAPoint() {
         tennis.playerOneGetsAPoint();
-        assertThat(tennis.getPlayerOneScore()).isOne();
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo("State of the game: 15-love");
     }
 
     @Test
     public void playerTwoShouldHaveAPoint_whenPlayerTwoScoresAPoint() {
         tennis.playerTwoGetsAPoint();
-        assertThat(tennis.getPlayerTwoScore()).isOne();
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo("State of the game: love-15");
     }
 
     @Test
     public void playerOneShouldHaveAPoint_whenPlayerOneScoresASecondPoint() {
         tennis.playerOneGetsAPoint();
         tennis.playerOneGetsAPoint();
-        assertThat(tennis.getPlayerOneScore()).isEqualTo(2);
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo("State of the game: 30-love");
     }
 
     @Test
     public void playerTwoShouldHaveAPoint_whenPlayerTwoScoresASecondPoint() {
         tennis.playerTwoGetsAPoint();
         tennis.playerTwoGetsAPoint();
-        assertThat(tennis.getPlayerTwoScore()).isEqualTo(2);
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo("State of the game: love-30");
     }
 
     @Test
@@ -59,18 +57,26 @@ class TennisTest {
             tennis.playerOneGetsAPoint();
             tennis.playerTwoGetsAPoint();
         }
-        assertThat(tennis.isADeuce()).isEqualTo("Deuce!");
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo("Deuce!");
     }
 
-    @Test
-    public void shouldNotBeADeuce_whenBothPlayerHaveLessThanThreePoints() {
-        for(int i = 0; i < 2; i++)  {
+    private static Stream<Arguments> tennisGameStates() {
+        return Stream.of(
+                Arguments.of(1, "State of the game: 15-all"),
+                Arguments.of(2, "State of the game: 30-all"),
+                Arguments.of(3, "Deuce!"),
+                Arguments.of(4, "Deuce!")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("tennisGameStates")
+    public void shouldNotBeADeuce_whenBothPlayerHaveLessThanThreePoints(int pointsScoredByBoth, String stateOfTheGame) {
+        for(int i = 0; i < pointsScoredByBoth; i++)  {
             tennis.playerOneGetsAPoint();
             tennis.playerTwoGetsAPoint();
         }
-        assertThat(tennis.isADeuce()).isEqualTo("No Deuce!");
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo(stateOfTheGame);
     }
 
     @Test
@@ -81,8 +87,7 @@ class TennisTest {
         }
 
         tennis.playerOneGetsAPoint();
-        assertThat(tennis.hasAdvantage()).isEqualTo("Player one has an Advantage!");
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo("Player one has an Advantage!");
     }
 
     @Test
@@ -93,8 +98,7 @@ class TennisTest {
         }
 
         tennis.playerTwoGetsAPoint();
-        assertThat(tennis.hasAdvantage()).isEqualTo("Player two has an Advantage!");
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo("Player two has an Advantage!");
     }
 
     @Test
@@ -103,10 +107,8 @@ class TennisTest {
             tennis.playerOneGetsAPoint();
             tennis.playerTwoGetsAPoint();
         }
-
         tennis.playerTwoGetsAPoint();
-        assertThat(tennis.hasAdvantage()).isEqualTo("No Advantage.");
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo("State of the game: 30-40");
     }
 
     @Test
@@ -115,11 +117,9 @@ class TennisTest {
             tennis.playerOneGetsAPoint();
             tennis.playerTwoGetsAPoint();
         }
-
         tennis.playerTwoGetsAPoint();
         tennis.playerTwoGetsAPoint();
-        assertThat(tennis.whoWon()).isEqualTo("Player two won!");
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo("Player two won!");
     }
 
     @Test
@@ -128,50 +128,15 @@ class TennisTest {
             tennis.playerOneGetsAPoint();
             tennis.playerTwoGetsAPoint();
         }
-
         tennis.playerOneGetsAPoint();
         tennis.playerOneGetsAPoint();
-        assertThat(tennis.whoWon()).isEqualTo("Player one won!");
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo("Player one won!");
     }
 
     @Test
     public void shouldNoOneWin_whenPointsAreBelowFour() {
         tennis.playerOneGetsAPoint();
         tennis.playerOneGetsAPoint();
-
-        assertThat(tennis.whoWon()).isEqualTo("No win.");
-        tennis.getStateOfTheGame();
+        assertThat(tennis.getStateOfTheGame()).isEqualTo("State of the game: 30-love");
     }
-
-    @Test
-    public void pointsShouldEqualLove_whenThereIsNoPoints() {
-        int scoredPoints = tennis.getPlayerOneScore();
-        assertThat(tennis.getTennisPoints(scoredPoints)).isEqualTo("love");
-    }
-
-    @Test
-    public void pointsShouldEqualFifteen_whenThereIsOnePoint() {
-        tennis.playerOneGetsAPoint();
-        int scoredPoints = tennis.getPlayerOneScore();
-        assertThat(tennis.getTennisPoints(scoredPoints)).isEqualTo("15");
-    }
-
-    @Test
-    public void pointsShouldEqualThirty_whenThereAreTwoPoint() {
-        tennis.playerOneGetsAPoint();
-        tennis.playerOneGetsAPoint();
-        int scoredPoints = tennis.getPlayerOneScore();
-        assertThat(tennis.getTennisPoints(scoredPoints)).isEqualTo("30");
-    }
-
-    @Test
-    public void pointsShouldEqualForty_whenThereAreTwoPoint() {
-        tennis.playerOneGetsAPoint();
-        tennis.playerOneGetsAPoint();
-        tennis.playerOneGetsAPoint();
-        int scoredPoints = tennis.getPlayerOneScore();
-        assertThat(tennis.getTennisPoints(scoredPoints)).isEqualTo("40");
-    }
-
 }
