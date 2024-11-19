@@ -1,7 +1,6 @@
 public class Tennis {
 
     public static final int DEUCE_THRESHOLD = 3;
-    public static final String NO_DEUCE = "No Deuce!";
     public static final String PLAYER_ONE_HAS_AN_ADVANTAGE = "Player one has an Advantage!";
     public static final String PLAYER_TWO_HAS_AN_ADVANTAGE = "Player two has an Advantage!";
     public static final int BOTH_PLAYERS_DEUCE_THRESHOLD = 6;
@@ -36,13 +35,6 @@ public class Tennis {
 
     private boolean isDeuceBoolean()    {
         return playerOneScore == playerTwoScore && playerOneScore >= DEUCE_THRESHOLD;
-    }
-
-    private String isADeuce()    {
-        if(playerOneScore == playerTwoScore && playerOneScore >= DEUCE_THRESHOLD) {
-            return DEUCE;
-        }
-        return NO_DEUCE;
     }
 
     private String hasAdvantage() {
