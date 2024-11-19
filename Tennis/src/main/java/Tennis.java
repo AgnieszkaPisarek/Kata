@@ -21,10 +21,9 @@ public class Tennis {
     public static final String NO_WIN = "No win.";
     public static final String DEUCE = "Deuce!";
 
-    public String startTheGameOfTennis() {
+    public void startTheGameOfTennis() {
         playerOneScore = 0;
         playerTwoScore = 0;
-        return "The game has started!";
     }
 
     public void playerOneGetsAPoint() {
@@ -35,22 +34,18 @@ public class Tennis {
         playerTwoScore++;
     }
 
-    public String isADeuce()    {
+    private boolean isDeuceBoolean()    {
+        return playerOneScore == playerTwoScore && playerOneScore >= DEUCE_THRESHOLD;
+    }
+
+    private String isADeuce()    {
         if(playerOneScore == playerTwoScore && playerOneScore >= DEUCE_THRESHOLD) {
             return DEUCE;
         }
         return NO_DEUCE;
     }
 
-    public int getPlayerOneScore() {
-        return playerOneScore;
-    }
-
-    public int getPlayerTwoScore() {
-        return playerTwoScore;
-    }
-
-    public String hasAdvantage() {
+    private String hasAdvantage() {
         if(playerOneScore > playerTwoScore && (playerOneScore + playerTwoScore) > BOTH_PLAYERS_DEUCE_THRESHOLD) {
             return PLAYER_ONE_HAS_AN_ADVANTAGE;
         }
@@ -61,7 +56,7 @@ public class Tennis {
         return NO_ADVANTAGE;
     }
 
-    public String whoWon()  {
+    private String whoWon()  {
         if(playerTwoScore - playerOneScore >= ADVANTAGE_OF_ONE_PLAYER_OVER_ANOTHER && playerTwoScore >= MINIMUM_SCORE_REQUIRED_TO_WIN) {
             return PLAYER_TWO_WON;
         }
@@ -71,7 +66,7 @@ public class Tennis {
         return NO_WIN;
     }
 
-    public String getTennisPoints(int points)   {
+    private String getTennisPoints(int points)   {
         return switch (points) {
             case 0 -> LOVE;
             case 1 -> FIRST_POINT;
@@ -89,15 +84,14 @@ public class Tennis {
         return winner;
     }
 
-    public String informAboutDeuce()  {
-        String deuceState = isADeuce();
-        if(!deuceState.equals(DEUCE)) {
-            return informAboutAdvantage();
+    private String informAboutDeuce()  {
+        if(isDeuceBoolean()) {
+            return DEUCE;
         }
-        return deuceState;
+        return informAboutAdvantage();
     }
 
-    public String informAboutAdvantage()  {
+    private String informAboutAdvantage()  {
         String playerWithAdvantage = hasAdvantage();
         if(playerWithAdvantage.equals(NO_ADVANTAGE)) {
             return displayPoints();
@@ -107,11 +101,11 @@ public class Tennis {
 
     private String displayPoints() {
         if(playerOneScore == playerTwoScore) {
-            return STATE_OF_THE_GAME + getTennisPoints(getPlayerOneScore()) + SCORE_FOR_BOTH_PLAYERS;
+            return STATE_OF_THE_GAME + getTennisPoints(playerOneScore) + SCORE_FOR_BOTH_PLAYERS;
         }
         return STATE_OF_THE_GAME +
-                                getTennisPoints(getPlayerOneScore())
-                                    + "-" + getTennisPoints(getPlayerTwoScore());
+                                getTennisPoints(playerOneScore)
+                                    + "-" + getTennisPoints(playerTwoScore);
     }
 
 }
